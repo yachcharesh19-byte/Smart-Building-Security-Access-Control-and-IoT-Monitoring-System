@@ -1,0 +1,36 @@
+#include<lpc21xx.h>
+#include "header.h"
+
+//WIFI CONNECT
+void wifi_connect(void)
+{
+	uart0_string("AT\r\n");
+	delay_ms(2000);
+	uart0_string("AT+CWMODE=1\r\n");
+	delay_ms(2000);
+	uart0_string("AT+CWJAP=\"BSNL3G\",\"12345678\"\r\n");
+	delay_ms(20000);
+	uart0_string("AT+CIFRS\r\n");
+	delay_ms(2000);
+	uart0_string("AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80\r\n");
+	delay_ms(5000);
+	uart0_string("AT+CIPSEND=122\r\n");
+	delay_ms(20000);
+	uart0_string("GET /update?api_key=P3NMKR3M8JKHDZFJ&field1=50&field2=120&field3=28&field4=1 HTTP/1.1\r\n");
+	delay_ms(5000);
+	uart0_string("Host:api.thingspeak.com\r\n\r\n");
+	delay_ms(5000);
+	uart0_string("connection:close\r\n\r\n");
+	delay_ms(8000);
+}
+
+//WIFI READ
+void esp_read(void)
+{
+	unsigned char ch;
+	while(1)
+	{
+		ch=uart0_rx();
+		uart0_tx(ch);
+	}
+}
