@@ -1,0 +1,2 @@
+# Smart-Building-Security-Access-Control-and-IoT-Monitoring-System
+Smart Building Security, Access Control &amp; IoT Monitoring System built on the LPC2129 (ARM7) microcontroller. Combines RFID + keypad access control, PIR motion sensing, servo-driven door lock, RTC-based event logging to EEPROM, LCD/UART status display, CAN bus messaging, and Wi-Fi (ESP8266) upload to ThingSpeak. Developed in Keil µVision.
